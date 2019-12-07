@@ -10,10 +10,9 @@ class Parameters:public QObject
     //使用信号、槽，类必须继承QObject，并且必须在此使用宏Q_OBJECCT
     Q_OBJECT
 private:
-    Languages *pLanObj;
-    ConfigFile *pCfObj;
-    QString lanType;
-    QMap<QString,QString> lanValues;
+    Languages *pLanObj=nullptr;
+    ConfigFile *pCfObj=nullptr;
+    QString lanType="中文简体";
     static Parameters *pInstance;
 
     Parameters();
@@ -21,14 +20,15 @@ private:
 
 public:
     void init();
+    void changeLanguage();
     void changeLanguage(const QString &_lanType);
-    const QMap<QString,QString> &getLanValues() noexcept;
+    bool getHistoryMenus(QVector<QString> &files);
     static Parameters *getInstancePtr();
 
 //信号声明区
 signals:
     //定义UI语言更新事件
-    void LanguageChanged(QMap<QString,QString> &lanValues);
+    void LanguageChanged();
 };
 
 #endif // PARAMETERS_H

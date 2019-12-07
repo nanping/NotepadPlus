@@ -3,24 +3,23 @@
 
 #include <QString>
 #include <QMap>
-#include <QXmlStreamReader>
+#include "configfile.h"
 
-class Languages
+class Languages:public ConfigFile
 {
 private:
     QString lanPath="";
-    QString lanName="";
-    QString lanVer="";
     QMap<QString,QString> lanTypes;
     static Languages *pLanObj;
 
     Languages();
-    void Clear();
-    void readLanValues(QXmlStreamReader &reader,QMap<QString,QString> &lanValues);
-    void readLanValues(QXmlStreamReader &reader,QMap<QString,QString> &lanValues,const QString &findKey);
 public:
     void setLanguagePath(const QString &path="");
-    bool loadXml(const QString &lanType,QMap<QString,QString> &lanValues,const QString &findKey="");
+    bool load(const QString &lanType);
+    bool getMainMenus(QMap<QString,QString> &menus);
+    bool getSubMenus(QMap<QString,QString> &menus);
+    bool getCommands(QMap<QString,QString> &commands);
+    bool getTabMenus(QMap<QString,QString> &menus);
     const QMap<QString,QString> getLanTypes() const;
     static Languages *getInstancePtr();
 };

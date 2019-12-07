@@ -17,12 +17,16 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    QLabel *lbldoc_type,*lbldoc_size,*lblcur_pos,*lbleof_format,*lblunicode_type,*lbltyping_mode;
+    QLabel *lbldoc_type=nullptr,*lbldoc_size=nullptr,*lblcur_pos=nullptr,*lbleof_format=nullptr,*lblunicode_type=nullptr,*lbltyping_mode=nullptr;
+    QAction *pRestore_Last_Closed_File=nullptr,*pOpen_All_Recent_File=nullptr,*pClean_Recent_File_List=nullptr;
+    QVector<QAction*> historyFiles;
+    void loadHistoryMenus();
+    void freeHistoryMenus();
     void createStatusBar();
-    void updateMenuText(QMenu *pMenu,QMap<QString, QString> &lanValues);
+    void updateMenuText(QMenu *pMenu,QMap<QString, QString> &menus,QMap<QString, QString> &commands);
 
 private slots:
     //接收语言变更通知后，更新UI界面
-    void  LanguageChanged(QMap<QString, QString> &lanValues);
+    void  LanguageChanged();
 };
 #endif // MAINWINDOW_H

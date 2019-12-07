@@ -1,4 +1,4 @@
-#include "configfile.h"
+﻿#include "configfile.h"
 #include "tools.h"
 #include <QFile>
 #include <QStandardPaths>
@@ -25,6 +25,11 @@ void ConfigFile::close()
         pDoc=nullptr;
     }
     errMsg.clear();
+}
+
+bool ConfigFile::isOpen()
+{
+    return (pDoc!=nullptr);
 }
 
 QString ConfigFile::getAttribute(const QString &xpath,const QString &attrName, const QString &defValue)
@@ -79,12 +84,10 @@ bool ConfigFile::setAttribute(const QString &xpath,const  QString &attrName, QSt
     try {
         if(!node)
         {
-            xml_node *pChild=nullptr;
-            if(!appendNodes(xpath,pChild)) return false;
-            pChild->append_attribute(attrName.toStdString().c_str()).set_value(value.toStdWString().c_str());
-        }else{
-            node.node().append_attribute(attrName.toStdString().c_str()).set_value(value.toStdWString().c_str());
+            node=appendNodes(xpath);
+            if(!node) return false;
         }
+        node.node().append_attribute(attrName.toStdString().c_str()).set_value(value.toStdWString().c_str());
         pDoc->save_file(fileName.toStdWString().c_str(),"\t",1U,encoding_utf8);
         return true;
     }
@@ -104,12 +107,10 @@ bool ConfigFile::setNodeValue(const QString &xpath, QString &value)
     try {
         if(!node)
         {
-            xml_node *pChild=nullptr;
-            if(!appendNodes(xpath,pChild)) return false;
-            pChild->set_value(value.toStdString().c_str());
-        }else{
-            node.node().set_value(value.toStdString().c_str());
+            node=appendNodes(xpath);
+            if(!node) return false;
         }
+        node.node().text().set(value.toStdString().c_str());
         pDoc->save_file(fileName.toStdWString().c_str(),"\t",1U,encoding_utf8);
         return true;
     }
@@ -141,44 +142,91 @@ bool ConfigFile::loadXml(const QString &file)
     return false;
 }
 
-bool ConfigFile::appendNodes(const QString &xpath, xml_node *pChild)
+bool ConfigFile::getNodesSameAttr(const QString &xpath, const QString &keyAttrName, const QString &valueAttrName, QMap<QString, QString> &attrs,const bool keyUpper,const bool repSchar)
+{
+    if(!isOpen()) return false;
+    attrs.clear();
+    QString key,value;
+    auto tools=queryNodes(xpath);
+    for(auto it=tools.begin();it!=tools.end();++it)
+    {
+        auto attr=it->node().attribute(keyAttrName.toStdString().c_str());
+        if(!attr) continue;
+        key=attr.value();
+        if(keyUpper) key=key.toUpper();
+        if(repSchar) key=key.replace('-','_');
+        attr=it->node().attribute(valueAttrName.toStdString().c_str());
+        if(attr)
+        {
+            value=attr.value();
+        }else{
+            value.clear();
+        }
+        if(attrs.find(key)!=attrs.end())
+        {
+            attrs.insert(key,value);
+        }else{
+            attrs[key]=value;
+        }
+    }
+    return attrs.count()>0;
+}
+
+bool ConfigFile::getNodesSameAttr(const QString &xpath, const QString &attrName, QVector<QString> &values)
+{
+    if(!isOpen()) return false;
+    values.clear();
+    auto tools=queryNodes(xpath);
+    for(auto it=tools.begin();it!=tools.end();++it)
+    {
+        auto attr=it->node().attribute(attrName.toStdString().c_str());
+        if(!attr) continue;
+        values.append(attr.value());
+    }
+    return values.count()>0;
+}
+
+xml_node ConfigFile::appendNodes(const QString &xpath)
 {
     auto list=xpath.split("/");
-    if(list.count()<2) return false;
+    if(list.count()<2) return xml_node();
     QMap<QString,QString> attrs;
-    getNodeName(list[1],attrs);
-    xml_node p= pDoc->child(list[1].toStdString().c_str());
-    if(!p)
+    int cnt=0;
+    xml_node p,n;
+    for(auto i=0,size=list.count();i<size;i++)
     {
-        p=pDoc->append_child(list[1].toStdString().c_str());
-    }
-    for(auto it=attrs.begin();it!=attrs.end();it++)
-    {
-        p.append_attribute(it.key().toStdString().c_str()).set_value(it.value().toStdString().c_str());
-    }
-    for(auto i=1,size=list.count()-1;i<size;i++)
-    {
-        if(list[i].isEmpty())
+        if(list[i].isEmpty()) continue;
+        readName(list[i],attrs);
+        if(!p)
         {
-            throw "xpath has null path.\n"+xpath;
-        }
-        getNodeName(list[i],attrs);
-        auto n=p.child(list[i].toStdString().c_str());
-        if(!n)
-        {
-            n=p.append_child(list[i].toStdString().c_str());
+            p=pDoc->child(list[i].toStdString().c_str());
+            if(!p) p=pDoc->append_child(list[i].toStdString().c_str());
+            n=p;
+        }else{
+            n=p.child(list[i].toStdString().c_str());
+            if(!n)
+            {
+                n=p.append_child(list[i].toStdString().c_str());
+            }
             p=n;
         }
         for(auto it=attrs.begin();it!=attrs.end();it++)
         {
-            n.append_attribute(it.key().toStdString().c_str()).set_value(it.value().toStdString().c_str());
+            auto attr=n.attribute(it.key().toStdString().c_str());
+            if(attr)
+            {
+                attr.set_value(it.value().toStdString().c_str());
+            }
+            else{
+                n.append_attribute(it.key().toStdString().c_str()).set_value(it.value().toStdString().c_str());
+            }
         }
+        cnt++;
     }
-    pChild=&p;
-    return true;
+    return cnt>0 ? p:xml_node();
 }
 
-void ConfigFile::getNodeName(QString &name,QMap<QString,QString> &attrs)
+void ConfigFile::readName(QString &name,QMap<QString,QString> &attrs)
 {
     attrs.clear();
     auto start=name.indexOf('[');
@@ -190,75 +238,40 @@ void ConfigFile::getNodeName(QString &name,QMap<QString,QString> &attrs)
         return;
     }
     auto tmp=name.mid(start+1,end-start-1);
-    QString key,value;
-    bool flag1,flag2;
-    int i,size=tmp.length();
-    start=0;
-    while((end=tmp.indexOf('=',start))>0)
+    name=name.mid(0,start).trimmed();
+    if(tmp.indexOf("@")>=0)
     {
-        key=tmp.mid(start+1,end-start-1).trimmed();
-        start=end+1;
-        if(key.isEmpty())  continue;
-        flag1=false;
-        flag2=false;
-        value.clear();
-        for(i=start;i<size;i++)
+        QString key,value;
+        int index;
+        auto list=tmp.split(" and ",QString::SplitBehavior::SkipEmptyParts,Qt::CaseInsensitive);
+        for(auto i=0,size=list.count();i<size;i++)
         {
-            if(tmp[i]=='"')
+            list[i]=list[i].trimmed();
+            if(list[i].isEmpty() || !list[i].startsWith("@")) continue;
+            if((index=list[i].indexOf('='))<1) continue;
+            key=list[i].mid(1,index-1).trimmed();
+            if(key.isEmpty()) continue;
+            value=list[i].mid(index+1).trimmed();
+            if(value.length()>1)
             {
-                if(flag1)
+                if(value.startsWith('"') && (index=value.indexOf('"',1))>1)
                 {
-                    if(i+1<size && tmp[i+1]!='"')
-                    {
-                        attrs.insert(key,value);
-                        start=i+1;
-                        key.clear();
-                        break;
-                    }else {
-                        value.append(tmp[i]);
-                    }
+                    value=value.mid(1,index-1);
                 }
-                else{
-                    flag1=true;
+                else if(value.startsWith('\'') && (index=value.indexOf('\'',1))>1)
+                {
+                    value=value.mid(1,index-1);
                 }
+                else continue;
             }
-            else if(tmp[i]=='\'')
+            if(attrs.find(key)!=attrs.end())
             {
-                if(flag2)
-                {
-                    if(i+1<size && tmp[i+1]!='\'')
-                    {
-                        attrs.insert(key,value);
-                        start=i+1;
-                        key.clear();
-                        break;
-                    }else {
-                        value.append(tmp[i]);
-                    }
-                }
-                else{
-                    flag2=true;
-                }
-            }
-            else if(tmp[i]==' ' || tmp[i]=='\t' || tmp[i]=='\r' || tmp[i]=='\n')
-            {
-                if(flag1 || flag2)
-                {
-                    value.append(tmp[i]);
-                }
-            }
-            else{
-                value.append(tmp[i]);
+                attrs[key]=value;
+            }else{
+                attrs.insert(key,value);
             }
         }
-        if(!key.isEmpty())
-        {
-            value=value.trimmed();
-            attrs.insert(key,value);
-        }
-        start=i;
     }
-
 }
 
 xpath_node ConfigFile::querySingleNode(const QString &xpath)

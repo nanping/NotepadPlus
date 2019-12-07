@@ -3,7 +3,7 @@
 
 Parameters *Parameters::pInstance=new Parameters();
 
-Parameters::Parameters():pLanObj(nullptr),pCfObj(nullptr),lanType("")
+Parameters::Parameters()
 {
 
 }
@@ -27,27 +27,38 @@ void Parameters::init()
     pLanObj=Languages::getInstancePtr();
     pLanObj->setLanguagePath();
     pCfObj=new ConfigFile();
-    QString v="sdfk";
-    pCfObj->setNodeValue("/h1/h2/h3[@name='hu']",v);
     if(pCfObj->loadXml())
     {
-        changeLanguage(pCfObj->getValue("/NotepadPlus/GUIConfigs/GUIConfig[@name=\"language\"]","中文简体"));
+        lanType=pCfObj->getValue("/NotepadPlus/GUIConfigs/GUIConfig[@name=\"language\"]","中文简体");
     }
-    else{
-        changeLanguage("中文简体");
-    }
+}
+
+void Parameters::changeLanguage()
+{
+    changeLanguage(lanType);
 }
 
 void Parameters::changeLanguage(const QString &_lanType)
 {
-    if(!pLanObj->loadXml(_lanType,lanValues)) return;
+    if(!pLanObj->load(_lanType)) return;
     //菜单加载完毕后，通知UI更新，以实现类之间解耦
-    emit LanguageChanged(lanValues);
+    emit LanguageChanged();
 }
 
-const QMap<QString, QString> &Parameters::getLanValues() noexcept
+bool Parameters::getHistoryMenus(QVector<QString> &files)
 {
-    return lanValues;
+    QString v=pCfObj->getAttribute("/NotepadPlus/History","nbMaxFile","");
+    if(v.isEmpty()) return false;
+    int maxFiles=v.toInt();
+    if(!pCfObj->getNodesSameAttr("/NotepadPlus/History/File","filename",files)) return false;
+    if(maxFiles>0)
+    {
+        while(files.count()>maxFiles)
+        {
+            files.removeAt(maxFiles);
+        }
+    }
+    return files.count()>0;
 }
 
 Parameters *Parameters::getInstancePtr()

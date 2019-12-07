@@ -1,4 +1,4 @@
-#ifndef CONFIG_H
+﻿#ifndef CONFIG_H
 #define CONFIG_H
 
 #include <QString>
@@ -16,14 +16,17 @@ public:
     ConfigFile();
     ~ConfigFile();
 
-private:
+protected:
     QString fileName;
     QString errMsg;
     xml_document *pDoc;
-    bool appendNodes(const QString &xpath,xml_node *pChild);
-    void getNodeName(QString &name,QMap<QString,QString> &attrs);
+    xml_node appendNodes(const QString &xpath);
+    void readName(QString &name,QMap<QString,QString> &attrs);
+    xpath_node querySingleNode(const QString &xpath);
+    xpath_node_set queryNodes(const QString &xpath);
 public:
     void close();
+    bool isOpen();
     bool loadXml(const QString &file="");
     QString getAttribute(const QString &xpath,const QString &attrName,const QString &defValue="");
     QString getValue(const QString &xpath,const QString &defValue="");
@@ -31,8 +34,8 @@ public:
     bool getAttributes(const QString &xpath,QMap<QString,QString> &attributes);
     bool setAttribute(const QString &xpath,const QString &attrName,QString &value);
     bool setNodeValue(const QString &xpath,QString &value);
-    xpath_node querySingleNode(const QString &xpath);
-    xpath_node_set queryNodes(const QString &xpath);
+    bool getNodesSameAttr(const QString &xpath,const QString &keyAttrName,const QString &valueAttrName,QMap<QString,QString> &attrs,const bool keyUpper=false,const bool repSchar=false);
+    bool getNodesSameAttr(const QString &xpath,const QString &attrName,QVector<QString> &values);
 };
 
 #endif // CONFIG_H

@@ -102,223 +102,6 @@ Languages::Languages():
 
 }
 
-void Languages::Clear()
-{
-    lanVer.clear();
-    lanName.clear();
-}
-
-void Languages::readLanValues(QXmlStreamReader &reader, QMap<QString, QString> &lanValues)
-{
-    int isStart=-1;
-    QString key("");
-    QString name("");
-    QString value("");
-    QString nodeName("");
-    int pos,cnt=0;
-    while((reader.readNext()!=QXmlStreamReader::TokenType::Invalid) && !reader.atEnd())
-    {
-        nodeName= reader.name().toString();
-        if(!reader.isStartElement()) {
-            if(isStart==1 && key.endsWith("/"+nodeName,Qt::CaseInsensitive))
-            {
-                pos=key.lastIndexOf('/');
-                if(pos>=0)
-                {
-                    key.remove(pos,key.length()-pos);
-                }else{
-                    key.clear();
-                }
-            }
-            continue;
-        }
-        if(isStart==1)
-        {
-            auto attributes=reader.attributes();
-            if(QString::compare("Item",nodeName,Qt::CaseInsensitive)==0)
-            {
-                name.clear();
-                if(attributes.hasAttribute("menuId")) name=attributes.value("menuId").toString();
-                if(attributes.hasAttribute("idName")) name=attributes.value("idName").toString();
-                if(attributes.hasAttribute("subMenuId")) name=attributes.value("subMenuId").toString();
-                if(attributes.hasAttribute("CMID")) name=attributes.value("CMID").toString();
-                if(attributes.hasAttribute("id")) name=attributes.value("id").toString();
-                if(name.isEmpty()) {
-                    continue;
-                }
-                name=name.replace("-","_");
-                value=attributes.hasAttribute("name") ? attributes.value("name").toString():"";
-                name=(key+"/"+name).toUpper();
-                if(lanValues.find(name)!=lanValues.end())
-                {
-                    lanValues[name]=value;
-                }else{
-                    lanValues.insert(name,value);
-                }
-            }
-            else if(QString::compare("Element",nodeName,Qt::CaseInsensitive)==0 && key.endsWith("/ComboBox",Qt::CaseInsensitive))
-            {
-                if(attributes.hasAttribute("name"))
-                {
-                    value=attributes.value("name").toString();
-                    name=QString("%1/%2/%3").arg(key).arg(nodeName).arg(cnt).toUpper();
-                    if(lanValues.find(name)!=lanValues.end())
-                    {
-                        lanValues[name]=value;
-                    }else{
-                        lanValues.insert(name,value);
-                    }
-                    cnt++;
-                }
-                else{
-                    continue;
-                }
-            }
-            else{
-                for(auto it=attributes.begin();it!=attributes.end();it++)
-                {
-                    name=(key+"/"+nodeName+"/"+it->name()).toUpper();
-                    value=it->value().toString();
-                    if(lanValues.find(name)!=lanValues.end())
-                    {
-                        lanValues[name]=value;
-                    }else{
-                        lanValues.insert(name,value);
-                    }
-                }
-                if(!reader.isEndElement()) key.append("/"+nodeName);
-            }
-            continue;
-        }
-        if(QString::compare("NotepadPlus",nodeName,Qt::CaseInsensitive)==0) {
-            isStart=0;
-            continue;
-        }
-        if(isStart==0 && QString::compare("Native-Langue",nodeName,Qt::CaseInsensitive)==0)
-        {
-            auto attributes=reader.attributes();
-            if(attributes.hasAttribute("name")) lanName=attributes.value("name").toString();
-            if(attributes.hasAttribute("version")) lanVer=attributes.value("version").toString();
-            isStart=1;
-            continue;
-        }
-    }
-}
-
-void Languages::readLanValues(QXmlStreamReader &reader, QMap<QString, QString> &lanValues,const QString &findKey)
-{
-    int isStart=-1;
-    QString key("");
-    QString name("");
-    QString value("");
-    QString nodeName("");
-    int pos,cnt=0;
-    while((reader.readNext()!=QXmlStreamReader::TokenType::Invalid) && !reader.atEnd())
-    {
-        nodeName= reader.name().toString();
-        if(!reader.isStartElement()) {
-            if(isStart==1 && key.endsWith("/"+nodeName,Qt::CaseInsensitive))
-            {
-                pos=key.lastIndexOf('/');
-                if(pos>=0)
-                {
-                    key.remove(pos,key.length()-pos);
-                }else{
-                    key.clear();
-                }
-            }
-            continue;
-        }
-        if(isStart==1)
-        {
-            if(!findKey.isEmpty()) {
-                if(!(key+"/"+nodeName+"/").startsWith(findKey,Qt::CaseInsensitive))
-                {
-                    if(lanValues.count()>0)
-                        break;
-                    else
-                    {
-                        if(QString::compare("Item",nodeName,Qt::CaseInsensitive)==0 ||
-                                (QString::compare("Element",nodeName,Qt::CaseInsensitive)==0 && key.endsWith("/ComboBox",Qt::CaseInsensitive)))
-                        {
-
-                        }else{
-                            if(!reader.isEndElement()) key.append("/"+nodeName);
-                        }
-                        continue;
-                    }
-                }
-            }
-            auto attributes=reader.attributes();
-            if(QString::compare("Item",nodeName,Qt::CaseInsensitive)==0)
-            {
-                name.clear();
-                if(attributes.hasAttribute("menuId")) name=attributes.value("menuId").toString();
-                if(attributes.hasAttribute("idName")) name=attributes.value("idName").toString();
-                if(attributes.hasAttribute("subMenuId")) name=attributes.value("subMenuId").toString();
-                if(attributes.hasAttribute("CMID")) name=attributes.value("CMID").toString();
-                if(attributes.hasAttribute("id")) name=attributes.value("id").toString();
-                if(name.isEmpty()) {
-                    continue;
-                }
-                value=attributes.hasAttribute("name") ? attributes.value("name").toString():"";
-                name=(key+"/"+name).toUpper();
-                if(lanValues.find(name)!=lanValues.end())
-                {
-                    lanValues[name]=value;
-                }else{
-                    lanValues.insert(name,value);
-                }
-            }
-            else if(QString::compare("Element",nodeName,Qt::CaseInsensitive)==0 && key.endsWith("/ComboBox",Qt::CaseInsensitive))
-            {
-                if(attributes.hasAttribute("name"))
-                {
-                    value=attributes.value("name").toString();
-                    name=QString("%1/%2/%3").arg(key).arg(nodeName).arg(cnt).toUpper();
-                    if(lanValues.find(name)!=lanValues.end())
-                    {
-                        lanValues[name]=value;
-                    }else{
-                        lanValues.insert(name,value);
-                    }
-                    cnt++;
-                }
-                else{
-                    continue;
-                }
-            }
-            else{
-                for(auto it=attributes.begin();it!=attributes.end();it++)
-                {
-                    name=(key+"/"+nodeName+"/"+it->name()).toUpper();
-                    value=it->value().toString();
-                    if(lanValues.find(name)!=lanValues.end())
-                    {
-                        lanValues[name]=value;
-                    }else{
-                        lanValues.insert(name,value);
-                    }
-                }
-                if(!reader.isEndElement()) key.append("/"+nodeName);
-            }
-            continue;
-        }
-        if(QString::compare("NotepadPlus",nodeName,Qt::CaseInsensitive)==0) {
-            isStart=0;
-            continue;
-        }
-        if(isStart==0 && QString::compare("Native-Langue",nodeName,Qt::CaseInsensitive)==0)
-        {
-            auto attributes=reader.attributes();
-            if(attributes.hasAttribute("name")) lanName=attributes.value("name").toString();
-            if(attributes.hasAttribute("version")) lanVer=attributes.value("version").toString();
-            isStart=1;
-            continue;
-        }
-    }
-}
-
 void Languages::setLanguagePath(const QString &path)
 {
     lanPath.clear();
@@ -330,32 +113,32 @@ void Languages::setLanguagePath(const QString &path)
     }
 }
 
-bool Languages::loadXml(const QString &lanType,QMap<QString,QString> &lanValues,const QString &findKeys)
+bool Languages::load(const QString &lanType)
 {
-    if(lanType.isEmpty()) return  false;
+    if(lanType.isEmpty()) return false;
     auto it=lanTypes.find(lanType);
     if(it==lanTypes.end()) return false;
-    QString file=pathCombine({lanPath,it.value()});
-    if(!fileExists(file)) return false;
-    lanValues.clear();
-    this->Clear();
-    QFile *pXmlFile=nullptr;
-    QXmlStreamReader reader;
-    try {
-        pXmlFile=new QFile(file);
-        reader.setDevice(pXmlFile);
-        if(!pXmlFile->open(QIODevice::ReadOnly|QIODevice::Text)) return false;
-        if(findKeys.isEmpty())
-            readLanValues(reader,lanValues);
-        else
-            readLanValues(reader,lanValues,findKeys);
-        pXmlFile->close();
-        return true;
-    } catch (...)
-    {
-        if(pXmlFile) pXmlFile->close();
-        return false;
-    }
+    return loadXml(pathCombine({lanPath,it.value()}));
+}
+
+bool Languages::getMainMenus(QMap<QString, QString> &menus)
+{
+    return getNodesSameAttr("/NotepadPlus/Native-Langue/Menu/Main/Entries/Item","menuId","name",menus,true,true);
+}
+
+bool Languages::getSubMenus(QMap<QString, QString> &menus)
+{
+    return getNodesSameAttr("/NotepadPlus/Native-Langue/Menu/Main/SubEntries/Item","subMenuId","name",menus,true,true);
+}
+
+bool Languages::getCommands(QMap<QString, QString> &commands)
+{
+    return getNodesSameAttr("/NotepadPlus/Native-Langue/Menu/Main/Commands/Item","id","name",commands,true,true);
+}
+
+bool Languages::getTabMenus(QMap<QString, QString> &menus)
+{
+    return getNodesSameAttr("/NotepadPlus/Native-Langue/Menu/Main/TabBar/Item","CMID","name",menus,true,true);
 }
 
 const QMap<QString, QString> Languages::getLanTypes() const
