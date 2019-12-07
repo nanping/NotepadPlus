@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QLabel>
+#include "tabscintilla.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,6 +18,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    TabScintilla *tabMain=nullptr;
     QLabel *lbldoc_type=nullptr,*lbldoc_size=nullptr,*lblcur_pos=nullptr,*lbleof_format=nullptr,*lblunicode_type=nullptr,*lbltyping_mode=nullptr;
     QAction *pRestore_Last_Closed_File=nullptr,*pOpen_All_Recent_File=nullptr,*pClean_Recent_File_List=nullptr;
     QVector<QAction*> historyFiles;

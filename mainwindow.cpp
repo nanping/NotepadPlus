@@ -30,6 +30,9 @@ MainWindow::MainWindow(QWidget *parent)
     //QMessageBox::information(this,"ApplicationsLocation",QStandardPaths::writableLocation(QStandardPaths::StandardLocation::ApplicationsLocation));
     pParameter->changeLanguage();
     this->setWindowState(Qt::WindowMaximized);
+
+    tabMain = new TabScintilla;
+    setCentralWidget(tabMain);
 }
 
 MainWindow::~MainWindow()
@@ -37,6 +40,11 @@ MainWindow::~MainWindow()
     delete ui;
     freeStatusBar();
     freeHistoryMenus();
+    if(tabMain)
+    {
+        delete tabMain;
+        tabMain=nullptr;
+    }
 }
 
 void MainWindow::loadHistoryMenus()

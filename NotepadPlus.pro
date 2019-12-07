@@ -1,4 +1,5 @@
 QT       += core gui
+CONFIG      += qscintilla2
 
 #设置应用程序图标
 RC_ICONS =./icons/npp.ico
@@ -28,6 +29,7 @@ SOURCES += \
     mainwindow.cpp \
     parameters.cpp \
     pugixml/pugixml.cpp \
+    tabscintilla.cpp \
     tools.cpp
 
 HEADERS += \
@@ -37,6 +39,7 @@ HEADERS += \
     parameters.h \
     pugixml/pugiconfig.hpp \
     pugixml/pugixml.hpp \
+    tabscintilla.h \
     tools.h
 
 FORMS += \
