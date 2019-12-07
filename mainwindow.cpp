@@ -35,12 +35,7 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
-    if(lbldoc_type) delete lbldoc_type;
-    if(lbldoc_size) delete lbldoc_size;
-    if(lblcur_pos) delete lblcur_pos;
-    if(lbleof_format) delete lbleof_format;
-    if(lblunicode_type) delete lblunicode_type;
-    if(lbltyping_mode) delete lbltyping_mode;
+    freeStatusBar();
     freeHistoryMenus();
 }
 
@@ -145,6 +140,35 @@ void MainWindow::createStatusBar()
     lbltyping_mode=new QLabel("INS");
     lbltyping_mode->setMinimumWidth(30);
     ui->statusbar->addPermanentWidget(lbltyping_mode);
+}
+
+void MainWindow::freeStatusBar()
+{
+    if(lbldoc_type)
+    {
+        delete lbldoc_type;
+        lbldoc_type=nullptr;
+    }
+    if(lbldoc_size)    {
+        delete lbldoc_size;
+        lbldoc_size=nullptr;
+    }
+    if(lblcur_pos)     {
+        delete lblcur_pos;
+        lblcur_pos=nullptr;
+    }
+    if(lbleof_format)     {
+        delete lbleof_format;
+        lbleof_format=nullptr;
+    }
+    if(lblunicode_type)     {
+        delete lblunicode_type;
+        lblunicode_type=nullptr;
+    }
+    if(lbltyping_mode)     {
+        delete lbltyping_mode;
+        lbltyping_mode=nullptr;
+    }
 }
 
 void MainWindow::updateMenuText(QMenu *pMenu,QMap<QString, QString> &menus,QMap<QString, QString> &commands)

@@ -23,6 +23,7 @@ private:
     void loadHistoryMenus();
     void freeHistoryMenus();
     void createStatusBar();
+    void freeStatusBar();
     void updateMenuText(QMenu *pMenu,QMap<QString, QString> &menus,QMap<QString, QString> &commands);
 
 private slots:
