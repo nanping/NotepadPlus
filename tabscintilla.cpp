@@ -39,7 +39,17 @@ TabScintilla::TabScintilla()
 
     pMd5=new QCryptographicHash(QCryptographicHash::Md5);
     mainEdit = new QsciScintilla;
-    subEdit = new QsciScintilla;
+
+    //行号显示区域
+    mainEdit->setMarginType(0, QsciScintilla::NumberMargin);
+    mainEdit->setMarginLineNumbers(0, true);
+    mainEdit->setMarginWidth(0,30);
+    //自动折叠区域
+    mainEdit->setMarginType(3, QsciScintilla::SymbolMargin);
+    mainEdit->setMarginLineNumbers(3, false);
+    mainEdit->setMarginWidth(3, 15);
+    mainEdit->setMarginSensitivity(3, true);
+
     this->addPage("");
     this->addPage("");
 }
@@ -50,11 +60,6 @@ TabScintilla::~TabScintilla()
     {
         delete mainEdit;
         mainEdit=nullptr;
-    }
-    if(subEdit)
-    {
-        delete subEdit;
-        subEdit=nullptr;
     }
     if(pMd5)
     {

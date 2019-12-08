@@ -44,7 +44,6 @@ private:
     QByteArray tmpBytes,tmpBytes2;
     QCryptographicHash *pMd5=nullptr;
     QsciScintilla *mainEdit=nullptr;
-    QsciScintilla *subEdit=nullptr;
     void tabCloseRequested(int index);
     void currentChanged(int index);
     const QString getMd5(const QString &value);
