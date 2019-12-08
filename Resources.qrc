@@ -1,36 +1,38 @@
 <RCC>
     <qresource prefix="/">
         <file>icons/npp.ico</file>
-<file>images/newFile.bmp</file>
-<file>images/openFile.bmp</file>
-<file>images/saveFile.bmp</file>
-<file>images/saveAll.bmp</file>
-<file>images/closeFile.bmp</file>
-<file>images/closeAll.bmp</file>
-<file>images/print.bmp</file>
-<file>images/cut.bmp</file>
-<file>images/copy.bmp</file>
-<file>images/paste.bmp</file>
-<file>images/undo.bmp</file>
-<file>images/redo.bmp</file>
-<file>images/find.bmp</file>
-<file>images/findReplace.bmp</file>
-<file>images/zoomIn.bmp</file>
-<file>images/zoomOut.bmp</file>
-<file>images/syncV.bmp</file>
-<file>images/syncH.bmp</file>
-<file>images/wrap.bmp</file>
-<file>images/invisibleChar.bmp</file>
-<file>images/indentGuide.bmp</file>
-<file>images/showPannel.bmp</file>
-<file>images/docMap.bmp</file>
-<file>images/functionList.bmp</file>
-<file>images/fileBrowser.bmp</file>
-<file>images/fileMonitoring.bmp</file>
-<file>images/startRecord.bmp</file>
-<file>images/stopRecord.bmp</file>
-<file>images/playRecord.bmp</file>
-<file>images/playRecord_m.bmp</file>
-<file>images/saveRecord.bmp</file>
+        <file>images/newFile.bmp</file>
+        <file>images/openFile.bmp</file>
+        <file>images/saveFile.bmp</file>
+        <file>images/saveAll.bmp</file>
+        <file>images/closeFile.bmp</file>
+        <file>images/closeAll.bmp</file>
+        <file>images/print.bmp</file>
+        <file>images/cut.bmp</file>
+        <file>images/copy.bmp</file>
+        <file>images/paste.bmp</file>
+        <file>images/undo.bmp</file>
+        <file>images/redo.bmp</file>
+        <file>images/find.bmp</file>
+        <file>images/findReplace.bmp</file>
+        <file>images/zoomIn.bmp</file>
+        <file>images/zoomOut.bmp</file>
+        <file>images/syncV.bmp</file>
+        <file>images/syncH.bmp</file>
+        <file>images/wrap.bmp</file>
+        <file>images/invisibleChar.bmp</file>
+        <file>images/indentGuide.bmp</file>
+        <file>images/showPannel.bmp</file>
+        <file>images/docMap.bmp</file>
+        <file>images/functionList.bmp</file>
+        <file>images/fileBrowser.bmp</file>
+        <file>images/fileMonitoring.bmp</file>
+        <file>images/startRecord.bmp</file>
+        <file>images/stopRecord.bmp</file>
+        <file>images/playRecord.bmp</file>
+        <file>images/playRecord_m.bmp</file>
+        <file>images/saveRecord.bmp</file>
+        <file>images/readonly.ico</file>
+        <file>images/unsaved.ico</file>
     </qresource>
 </RCC>

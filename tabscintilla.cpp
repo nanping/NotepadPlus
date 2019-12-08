@@ -1,7 +1,6 @@
 ﻿#include "tabscintilla.h"
 #include <QFileInfo>
 #include <QMessageBox>
-
 #include "tools.h"
 /*
 ui->tabWidget->setTabIcon(0,QIcon("F:\\磊神图片\\icons\\2.ico"));//设置选项卡图标
@@ -25,14 +24,24 @@ TabScintilla::TabScintilla()
     this->setTabsClosable(true);
     this->setMovable(true);
     this->usesScrollButtons();
+    this->setIconSize(QSize(16,16));
+    pSaveIcon=new QIcon();
+    pSaveIcon->addFile(QString::fromUtf8(":/images/saveFile.bmp"), QSize(), QIcon::Normal, QIcon::Off);
+
+    puSaveIcon=new QIcon();
+    puSaveIcon->addFile(QString::fromUtf8(":/images/unsaved.ico"), QSize(), QIcon::Normal, QIcon::Off);
+
+    pReadOnlyIcon=new QIcon();
+    pReadOnlyIcon->addFile(QString::fromUtf8(":/images/readonly.ico"), QSize(), QIcon::Normal, QIcon::Off);
+
     connect(this,&QTabWidget::tabCloseRequested,this,&TabScintilla::tabCloseRequested);
     connect(this,&QTabWidget::currentChanged,this,&TabScintilla::currentChanged);
 
     pMd5=new QCryptographicHash(QCryptographicHash::Md5);
     mainEdit = new QsciScintilla;
     subEdit = new QsciScintilla;
-    auto page=this->addPage("");
-    page=this->addPage("");
+    this->addPage("");
+    this->addPage("");
 }
 
 TabScintilla::~TabScintilla()
@@ -51,6 +60,16 @@ TabScintilla::~TabScintilla()
     {
         delete pMd5;
         pMd5=nullptr;
+    }
+    if(pSaveIcon!=nullptr)
+    {
+        delete pSaveIcon;
+        pSaveIcon=nullptr;
+    }
+    if(puSaveIcon!=nullptr)
+    {
+        delete puSaveIcon;
+        puSaveIcon=nullptr;
     }
 }
 
@@ -84,18 +103,21 @@ TabPage *TabScintilla::addPage(const QString &file)
     if(fileExists(file))
     {
         QFileInfo fInfo(file);
-        page=new TabPage(file);
+        page=new TabPage(this,file);
         page->setObjectName(getMd5(file));
-        this->addTab(page, fInfo.fileName());
+        auto index=this->addTab(page, fInfo.fileName());
+        this->setTabIcon(index,*pSaveIcon);
+        this->setTabToolTip(index,file);
     }
     else{
         QString id=QString("new %1").arg(++ufileCnt);
-        page=new TabPage(id);
+        page=new TabPage(this,id);
         page->isSave=false;
         page->setObjectName(getMd5(id));
-        this->addTab(page, id);
+        auto index=this->addTab(page, id);
+        this->setTabIcon(index,*puSaveIcon);
+        this->setTabToolTip(index,id);
     }
-    this->setCurrentWidget(static_cast<QWidget*>(page));
     return page;
 }
 
@@ -159,8 +181,9 @@ const QString TabScintilla::getMd5(const QString &value)
     return rt;
 }
 
-TabPage::TabPage(const QString &_fileName)
+TabPage::TabPage(TabScintilla *_pParent,const QString &_fileName)
 {
+    pParent=_pParent;
     fileName=_fileName;
     pLayout=new QHBoxLayout(this);
 }
@@ -182,4 +205,18 @@ void TabPage::setTextEdit(QsciScintilla *_pEdit)
     pEdit=_pEdit;
     pLayout->addWidget(pEdit);
     pLayout->setContentsMargins(0,0,0,0);
+}
+
+void TabPage::setSaveStatus(bool _isSave)
+{
+    if(_isSave==isSave) return;
+    int index=pParent->indexOf(static_cast<QWidget*>(this));
+    if(index<0) return;
+    isSave=_isSave;
+    if(isSave)
+    {
+        pParent->setTabIcon(index,*pParent->pSaveIcon);
+    }else{
+        pParent->setTabIcon(index,*pParent->puSaveIcon);
+    }
 }
