@@ -4,7 +4,8 @@
 #include <QMap>
 #include <QMessageBox>
 #include "parameters.h"
-#include "languages.h"
+#include "uilanguage.h"
+#include "configfile.h"
 #include <QStandardPaths>
 
 static Parameters *pParameter=Parameters::getInstancePtr();
@@ -16,23 +17,25 @@ MainWindow::MainWindow(QWidget *parent)
     pParameter->init();
     //关联语言变更事件
     connect(pParameter,&Parameters::LanguageChanged,this,&MainWindow::LanguageChanged);
+    connect(pParameter->getConfigPtr(),&ConfigFile::ValueChanged,this,&MainWindow::ValueChanged);
+
     ui->setupUi(this);
     ui->toolBar->setFloatable(false);//设置不可悬浮在主窗口
     ui->toolBar->setMovable(false);//设置不可移动
     ui->toolBar->setIconSize(QSize(16,16));//设置图标大小
     this->loadHistoryMenus();
     this->createStatusBar();
-    //
-
-    //QMessageBox::information(this,"AppDataLocation",QStandardPaths::writableLocation(QStandardPaths::StandardLocation::AppDataLocation));
-    //QMessageBox::information(this,"AppConfigLocation",QStandardPaths::writableLocation(QStandardPaths::StandardLocation::AppConfigLocation));
-    //QMessageBox::information(this,"AppLocalDataLocation",QStandardPaths::writableLocation(QStandardPaths::StandardLocation::AppLocalDataLocation));
-    //QMessageBox::information(this,"ApplicationsLocation",QStandardPaths::writableLocation(QStandardPaths::StandardLocation::ApplicationsLocation));
-    pParameter->changeLanguage();
     this->setWindowState(Qt::WindowMaximized);
-
     tabMain = new TabScintilla;
     setCentralWidget(tabMain);
+    loadSettings();
+
+
+    //    QMessageBox::information(this,"AppDataLocation",QStandardPaths::writableLocation(QStandardPaths::StandardLocation::AppDataLocation));
+    //    QMessageBox::information(this,"AppConfigLocation",QStandardPaths::writableLocation(QStandardPaths::StandardLocation::AppConfigLocation));
+    //    QMessageBox::information(this,"AppLocalDataLocation",QStandardPaths::writableLocation(QStandardPaths::StandardLocation::AppLocalDataLocation));
+    //    QMessageBox::information(this,"ApplicationsLocation",QStandardPaths::writableLocation(QStandardPaths::StandardLocation::ApplicationsLocation));
+    connect(ui->IDM_SETTING_PREFERENCE,&QAction::triggered,this,&MainWindow::showSettingDialog);
 }
 
 MainWindow::~MainWindow()
@@ -45,14 +48,18 @@ MainWindow::~MainWindow()
         delete tabMain;
         tabMain=nullptr;
     }
+    if(pPreferencesDlg)
+    {
+        delete pPreferencesDlg;
+        pPreferencesDlg=nullptr;
+    }
 }
 
 void MainWindow::loadHistoryMenus()
 {
     freeHistoryMenus();
-    Parameters *p=Parameters::getInstancePtr();
     QVector<QString> files;
-    if(!p->getHistoryMenus(files)) return;
+    if(!pParameter->getConfigPtr()->getHistoryFiles(files)) return;
     QAction *pAction=nullptr,*pBefore=ui->IDM_FILE_EXIT;
     //
     pAction = new QAction(this);
@@ -209,6 +216,30 @@ void MainWindow::updateMenuText(QMenu *pMenu,QMap<QString, QString> &menus,QMap<
     }
 }
 
+void MainWindow::showSettingDialog()
+{
+    if(!pPreferencesDlg)
+    {
+        pPreferencesDlg=new IDD_PREFERENCE_BOX(this);
+    }
+    pPreferencesDlg->showNormal();
+}
+
+void MainWindow::ValueChanged(const int msg,const void *data)
+{
+    switch(msg)
+    {
+    case MSG_LANGUAGE_CHANGE:
+        LanguageChanged();
+        break;
+    case MSG_TOOLBAR_CHANGE:
+        if(!data) return;
+        const bool *hide=static_cast<const bool *>(data);
+        ui->toolBar->setVisible(!(*hide));
+        break;
+    }
+}
+
 void MainWindow::LanguageChanged()
 {
     int i,size;
@@ -216,7 +247,7 @@ void MainWindow::LanguageChanged()
     QMap<QString, QString> mainMenus,subMenus,commands;
     //更新一级菜单
     QList<QAction*> list=ui->menubar->actions();
-    Languages *pLan=Languages::getInstancePtr();
+    UILanguage *pLan=UILanguage::getInstancePtr();
     pLan->getMainMenus(mainMenus);
     pLan->getSubMenus(subMenus);
     pLan->getCommands(commands);
@@ -227,5 +258,10 @@ void MainWindow::LanguageChanged()
         if(mainMenus.find(key)!=mainMenus.end()) p->setText(mainMenus[key]);
         updateMenuText(p->menu(),subMenus,commands);
     }
+}
+
+void MainWindow::loadSettings()
+{
+    pParameter->changeLanguage();
 }
 

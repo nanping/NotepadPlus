@@ -4665,19 +4665,19 @@ PUGI__NS_BEGIN
 	}
 
 	template <typename String, typename Header>
-	PUGI__FN bool set_value_convert(String& dest, Header& header, uintptr_t header_mask, float value, int precision)
+	PUGI__FN bool set_value_convert(String& dest, Header& header, uintptr_t header_mask, float value)
 	{
 		char buf[128];
-		PUGI__SNPRINTF(buf, "%.*g", precision, double(value));
+		PUGI__SNPRINTF(buf, "%.9g", double(value));
 
 		return set_value_ascii(dest, header, header_mask, buf);
 	}
 
 	template <typename String, typename Header>
-	PUGI__FN bool set_value_convert(String& dest, Header& header, uintptr_t header_mask, double value, int precision)
+	PUGI__FN bool set_value_convert(String& dest, Header& header, uintptr_t header_mask, double value)
 	{
 		char buf[128];
-		PUGI__SNPRINTF(buf, "%.*g", precision, value);
+		PUGI__SNPRINTF(buf, "%.17g", value);
 
 		return set_value_ascii(dest, header, header_mask, buf);
 	}
@@ -5342,28 +5342,14 @@ namespace pugi
 	{
 		if (!_attr) return false;
 
-		return impl::set_value_convert(_attr->value, _attr->header, impl::xml_memory_page_value_allocated_mask, rhs, default_double_precision);
-	}
-
-	PUGI__FN bool xml_attribute::set_value(double rhs, int precision)
-	{
-		if (!_attr) return false;
-
-		return impl::set_value_convert(_attr->value, _attr->header, impl::xml_memory_page_value_allocated_mask, rhs, precision);
+		return impl::set_value_convert(_attr->value, _attr->header, impl::xml_memory_page_value_allocated_mask, rhs);
 	}
 
 	PUGI__FN bool xml_attribute::set_value(float rhs)
 	{
 		if (!_attr) return false;
 
-		return impl::set_value_convert(_attr->value, _attr->header, impl::xml_memory_page_value_allocated_mask, rhs, default_float_precision);
-	}
-
-	PUGI__FN bool xml_attribute::set_value(float rhs, int precision)
-	{
-		if (!_attr) return false;
-
-		return impl::set_value_convert(_attr->value, _attr->header, impl::xml_memory_page_value_allocated_mask, rhs, precision);
+		return impl::set_value_convert(_attr->value, _attr->header, impl::xml_memory_page_value_allocated_mask, rhs);
 	}
 
 	PUGI__FN bool xml_attribute::set_value(bool rhs)
@@ -6073,27 +6059,6 @@ namespace pugi
 		return true;
 	}
 
-	PUGI__FN bool xml_node::remove_attributes()
-	{
-		if (!_root) return false;
-
-		impl::xml_allocator& alloc = impl::get_allocator(_root);
-		if (!alloc.reserve()) return false;
-
-		for (xml_attribute_struct* attr = _root->first_attribute; attr; )
-		{
-			xml_attribute_struct* next = attr->next_attribute;
-
-			impl::destroy_attribute(attr, alloc);
-
-			attr = next;
-		}
-
-		_root->first_attribute = 0;
-
-		return true;
-	}
-
 	PUGI__FN bool xml_node::remove_child(const char_t* name_)
 	{
 		return remove_child(child(name_));
@@ -6108,27 +6073,6 @@ namespace pugi
 
 		impl::remove_node(n._root);
 		impl::destroy_node(n._root, alloc);
-
-		return true;
-	}
-
-	PUGI__FN bool xml_node::remove_children()
-	{
-		if (!_root) return false;
-
-		impl::xml_allocator& alloc = impl::get_allocator(_root);
-		if (!alloc.reserve()) return false;
-
-		for (xml_node_struct* child = _root->first_child; child; )
-		{
-			xml_node_struct* next = child->next_sibling;
-
-			impl::destroy_node(child, alloc);
-
-			child = next;
-		}
-
-		_root->first_child = 0;
 
 		return true;
 	}
@@ -6559,28 +6503,14 @@ namespace pugi
 	{
 		xml_node_struct* dn = _data_new();
 
-		return dn ? impl::set_value_convert(dn->value, dn->header, impl::xml_memory_page_value_allocated_mask, rhs, default_float_precision) : false;
-	}
-
-	PUGI__FN bool xml_text::set(float rhs, int precision)
-	{
-		xml_node_struct* dn = _data_new();
-
-		return dn ? impl::set_value_convert(dn->value, dn->header, impl::xml_memory_page_value_allocated_mask, rhs, precision) : false;
+		return dn ? impl::set_value_convert(dn->value, dn->header, impl::xml_memory_page_value_allocated_mask, rhs) : false;
 	}
 
 	PUGI__FN bool xml_text::set(double rhs)
 	{
 		xml_node_struct* dn = _data_new();
 
-		return dn ? impl::set_value_convert(dn->value, dn->header, impl::xml_memory_page_value_allocated_mask, rhs, default_double_precision) : false;
-	}
-
-	PUGI__FN bool xml_text::set(double rhs, int precision)
-	{
-		xml_node_struct* dn = _data_new();
-
-		return dn ? impl::set_value_convert(dn->value, dn->header, impl::xml_memory_page_value_allocated_mask, rhs, precision) : false;
+		return dn ? impl::set_value_convert(dn->value, dn->header, impl::xml_memory_page_value_allocated_mask, rhs) : false;
 	}
 
 	PUGI__FN bool xml_text::set(bool rhs)
@@ -9756,7 +9686,7 @@ PUGI__NS_BEGIN
 			{
 				xpath_context c(*it, i, size);
 
-				if (expr->eval_number(c, stack) == static_cast<double>(i))
+				if (expr->eval_number(c, stack) == i)
 				{
 					*last++ = *it;
 
@@ -9780,11 +9710,11 @@ PUGI__NS_BEGIN
 
 			double er = expr->eval_number(c, stack);
 
-			if (er >= 1.0 && er <= static_cast<double>(size))
+			if (er >= 1.0 && er <= size)
 			{
 				size_t eri = static_cast<size_t>(er);
 
-				if (er == static_cast<double>(eri))
+				if (er == eri)
 				{
 					xpath_node r = last[eri - 1];
 
@@ -10742,7 +10672,7 @@ PUGI__NS_BEGIN
 				double first = round_nearest(_right->eval_number(c, stack));
 
 				if (is_nan(first)) return xpath_string(); // NaN
-				else if (first >= static_cast<double>(s_length + 1)) return xpath_string();
+				else if (first >= s_length + 1) return xpath_string();
 
 				size_t pos = first < 1 ? 1 : static_cast<size_t>(first);
 				assert(1 <= pos && pos <= s_length + 1);
@@ -10766,12 +10696,12 @@ PUGI__NS_BEGIN
 				double last = first + round_nearest(_right->_next->eval_number(c, stack));
 
 				if (is_nan(first) || is_nan(last)) return xpath_string();
-				else if (first >= static_cast<double>(s_length + 1)) return xpath_string();
+				else if (first >= s_length + 1) return xpath_string();
 				else if (first >= last) return xpath_string();
 				else if (last < 1) return xpath_string();
 
 				size_t pos = first < 1 ? 1 : static_cast<size_t>(first);
-				size_t end = last >= static_cast<double>(s_length + 1) ? s_length + 1 : static_cast<size_t>(last);
+				size_t end = last >= s_length + 1 ? s_length + 1 : static_cast<size_t>(last);
 
 				assert(1 <= pos && pos <= end && end <= s_length + 1);
 				const char_t* rbegin = s.c_str() + (pos - 1);

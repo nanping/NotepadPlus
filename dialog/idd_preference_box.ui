@@ -1,0 +1,3230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>IDD_PREFERENCE_BOX</class>
+ <widget class="QDialog" name="IDD_PREFERENCE_BOX">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>897</width>
+    <height>595</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Preferences</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,7">
+   <property name="spacing">
+    <number>5</number>
+   </property>
+   <property name="leftMargin">
+    <number>3</number>
+   </property>
+   <property name="topMargin">
+    <number>3</number>
+   </property>
+   <property name="rightMargin">
+    <number>3</number>
+   </property>
+   <property name="bottomMargin">
+    <number>3</number>
+   </property>
+   <item>
+    <widget class="QListWidget" name="IDC_LIST_DLGTITLE"/>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="0,2">
+     <item>
+      <widget class="QStackedWidget" name="stackedWidget">
+       <widget class="QWidget" name="IDD_PREFERENCE_BAR_BOX">
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>20</y>
+           <width>568</width>
+           <height>313</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="IDD_PREFERENCE_BAR_BOX_layout" stretch="4,6">
+          <item>
+           <layout class="QFormLayout" name="formLayout">
+            <item row="0" column="0" colspan="2">
+             <widget class="QGroupBox" name="IDC_LOCALIZATION_GB_STATIC">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>51</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>51</height>
+               </size>
+              </property>
+              <property name="title">
+               <string>Localization</string>
+              </property>
+              <widget class="QComboBox" name="IDC_COMBO_LOCALIZATION">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>20</y>
+                 <width>151</width>
+                 <height>21</height>
+                </rect>
+               </property>
+              </widget>
+             </widget>
+            </item>
+            <item row="1" column="0" colspan="2">
+             <widget class="QGroupBox" name="IDC_TOOLBAR_GB_STATIC">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>125</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>125</height>
+               </size>
+              </property>
+              <property name="title">
+               <string>Toolbar</string>
+              </property>
+              <widget class="QWidget" name="layoutWidget">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>20</y>
+                 <width>141</width>
+                 <height>99</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_3">
+                <item>
+                 <widget class="QCheckBox" name="IDC_CHECK_HIDE">
+                  <property name="text">
+                   <string>Hide</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="IDC_RADIO_SMALLICON">
+                  <property name="text">
+                   <string>Small icons</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="IDC_RADIO_BIGICON">
+                  <property name="text">
+                   <string>Big icons</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="IDC_RADIO_STANDARD">
+                  <property name="text">
+                   <string>Standard icons</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+            <item row="2" column="0" colspan="2">
+             <widget class="QGroupBox" name="IDC_DOCSWITCH_GB_STATIC">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>71</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>71</height>
+               </size>
+              </property>
+              <property name="title">
+               <string>Document List Panel</string>
+              </property>
+              <widget class="QWidget" name="layoutWidget">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>20</y>
+                 <width>271</width>
+                 <height>47</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_4">
+                <item>
+                 <widget class="QCheckBox" name="IDC_CHECK_DOCSWITCH">
+                  <property name="text">
+                   <string>Show</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="IDC_CHECK_DOCSWITCH_NOEXTCOLUMN">
+                  <property name="text">
+                   <string>Disable extension column</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+            <item row="3" column="0" colspan="2">
+             <widget class="QCheckBox" name="IDC_CHECK_SHOWSTATUSBAR">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>16</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>16</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Show status bar</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QFormLayout" name="formLayout_2">
+            <item row="0" column="0" colspan="2">
+             <widget class="QGroupBox" name="IDC_TABBAR_GB_STATIC">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>281</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>281</height>
+               </size>
+              </property>
+              <property name="title">
+               <string>Tab Bar</string>
+              </property>
+              <widget class="QWidget" name="layoutWidget">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>23</y>
+                 <width>391</width>
+                 <height>255</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_2">
+                <item>
+                 <widget class="QCheckBox" name="IDC_CHECK_TAB_HIDE">
+                  <property name="text">
+                   <string>Hide</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="IDC_CHECK_TAB_MULTILINE">
+                  <property name="text">
+                   <string>Multi-line</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="IDC_CHECK_TAB_VERTICAL">
+                  <property name="text">
+                   <string>Vertical</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="IDC_CHECK_REDUCE">
+                  <property name="text">
+                   <string>Reduce</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="IDC_CHECK_LOCK">
+                  <property name="text">
+                   <string>Lock (no drag and drop)</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="IDC_CHECK_DRAWINACTIVE">
+                  <property name="text">
+                   <string>Darken inactive tabs</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="IDC_CHECK_ORANGE">
+                  <property name="text">
+                   <string>Draw a coloured bar on active tab</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="IDC_CHECK_ENABLETABCLOSE">
+                  <property name="text">
+                   <string>Show close button on each tab</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="IDC_CHECK_DBCLICK2CLOSE">
+                  <property name="text">
+                   <string>Double click to close document</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="IDC_CHECK_TAB_LAST_EXIT">
+                  <property name="text">
+                   <string>Exit on close the last tab</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+            <item row="1" column="0" colspan="2">
+             <widget class="QCheckBox" name="IDC_CHECK_HIDEMENUBAR">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>21</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>21</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Hide menu bar (use Alt or F10 key to toggle)</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="IDD_PREFERENCE_MARGEIN_BOX">
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>13</y>
+           <width>651</width>
+           <height>521</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="IDD_PREFERENCE_MARGEIN_BOX_layout">
+          <property name="spacing">
+           <number>5</number>
+          </property>
+          <item row="1" column="0">
+           <widget class="QGroupBox" name="IDC_FMS_GB_STATIC">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>151</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>151</height>
+             </size>
+            </property>
+            <property name="title">
+             <string>Folder Margin Style</string>
+            </property>
+            <widget class="QWidget" name="layoutWidget">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>22</y>
+               <width>161</width>
+               <height>125</height>
+              </rect>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_8">
+              <item>
+               <widget class="QRadioButton" name="IDC_RADIO_SIMPLE">
+                <property name="text">
+                 <string>Simple</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="IDC_RADIO_ARROW">
+                <property name="text">
+                 <string>Arrow</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="IDC_RADIO_CIRCLE">
+                <property name="text">
+                 <string>Circle tree</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="IDC_RADIO_BOX">
+                <property name="text">
+                 <string>Box tree</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="IDC_RADIO_FOLDMARGENONE">
+                <property name="text">
+                 <string>None</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+          <item row="0" column="2" colspan="3" alignment="Qt::AlignTop">
+           <widget class="QGroupBox" name="IDC_MULTISELECTION_GB_STATIC">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>81</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>81</height>
+             </size>
+            </property>
+            <property name="title">
+             <string>Multi-Editing Settings</string>
+            </property>
+            <widget class="QCheckBox" name="IDC_CHECK_MULTISELECTION">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>25</y>
+               <width>311</width>
+               <height>16</height>
+              </rect>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Enable (Ctrl+Mouse click/selection)</string>
+             </property>
+            </widget>
+           </widget>
+          </item>
+          <item row="2" column="0" colspan="5">
+           <widget class="QGroupBox" name="IDC_BORDERWIDTH_STATIC">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>51</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>51</height>
+             </size>
+            </property>
+            <property name="title">
+             <string>Border Width</string>
+            </property>
+            <widget class="QWidget" name="layoutWidget">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>20</y>
+               <width>261</width>
+               <height>24</height>
+              </rect>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <item>
+               <widget class="QSlider" name="IDC_BORDERWIDTH_SLIDER">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="IDC_BORDERWIDTHVAL_STATIC">
+                <property name="text">
+                 <string>0</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QCheckBox" name="IDC_CHECK_NOEDGE">
+                <property name="text">
+                 <string>No edge</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+          <item row="3" column="0" colspan="5">
+           <layout class="QVBoxLayout" name="verticalLayout_9">
+            <item>
+             <widget class="QCheckBox" name="IDC_CHECK_LINENUMBERMARGE">
+              <property name="text">
+               <string>Display line number</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="IDC_CHECK_BOOKMARKMARGE">
+              <property name="text">
+               <string>Display bookmark</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="IDC_CHECK_CURRENTLINEHILITE">
+              <property name="text">
+               <string>Enable current line highlighting</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="IDC_CHECK_SMOOTHFONT">
+              <property name="text">
+               <string>Enable smooth font</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="IDC_CHECK_SCROLLBEYONDLASTLINE">
+              <property name="text">
+               <string>Enable scrolling beyond last line</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="IDC_CHECK_DISABLEADVANCEDSCROLL">
+              <property name="text">
+               <string>Disable advanced scrolling feature
+(if you have touchpad problem)</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="1" colspan="2">
+           <widget class="QGroupBox" name="IDC_VES_GB_STATIC">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>151</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>151</height>
+             </size>
+            </property>
+            <property name="title">
+             <string>Vertical Edge Settings</string>
+            </property>
+            <widget class="QWidget" name="layoutWidget">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>100</y>
+               <width>221</width>
+               <height>17</height>
+              </rect>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <item>
+               <widget class="QLabel" name="IDC_NBCOLONE_STATIC">
+                <property name="text">
+                 <string>Number of columns :</string>
+                </property>
+                <property name="title" stdset="0">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="IDC_COLONENUMBER_STATIC">
+                <property name="text">
+                 <string>0</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="layoutWidget">
+             <property name="geometry">
+              <rect>
+               <x>7</x>
+               <y>24</y>
+               <width>221</width>
+               <height>73</height>
+              </rect>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_10">
+              <item>
+               <widget class="QCheckBox" name="IDC_CHECK_SHOWVERTICALEDGE">
+                <property name="text">
+                 <string>Show vertical edge</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="IDC_RADIO_LNMODE">
+                <property name="text">
+                 <string>Line mode</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="IDC_RADIO_BGMODE">
+                <property name="text">
+                 <string>Background mode</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+          <item row="1" column="3" colspan="2" alignment="Qt::AlignTop">
+           <widget class="QGroupBox" name="IDC_LW_GB_STATIC">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>151</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>151</height>
+             </size>
+            </property>
+            <property name="title">
+             <string>Line Wrap</string>
+            </property>
+            <widget class="QWidget" name="layoutWidget">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>22</y>
+               <width>181</width>
+               <height>73</height>
+              </rect>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_7">
+              <item>
+               <widget class="QRadioButton" name="IDC_RADIO_LWDEF">
+                <property name="text">
+                 <string>Default</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="IDC_RADIO_LWALIGN">
+                <property name="text">
+                 <string>Aligned</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="IDC_RADIO_LWINDENT">
+                <property name="text">
+                 <string>Indent</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QGroupBox" name="IDC_CARETSETTING_STATIC">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>81</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>81</height>
+             </size>
+            </property>
+            <property name="title">
+             <string>Caret Settings</string>
+            </property>
+            <widget class="QWidget" name="layoutWidget">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>20</y>
+               <width>261</width>
+               <height>51</height>
+              </rect>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_5">
+                <item>
+                 <widget class="QLabel" name="IDC_WIDTH_STATIC">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>16</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>16</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>Width :</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="IDC_WIDTH_COMBO">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>21</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>21</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_6">
+                <item>
+                 <widget class="QLabel" name="IDC_BLINKRATE_STATIC">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>16</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>16</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>Blink rate :</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_2">
+                  <item>
+                   <widget class="QLabel" name="IDC_CARETBLINKRATE_F_STATIC">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>16</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>16</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>F</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QSlider" name="IDC_CARETBLINKRATE_SLIDER">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="IDC_CARETBLINKRATE_S_STATIC">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>16</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>16</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>S</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="IDD_PREFERENCE_NEWDOCSETTING_BOX">
+        <widget class="QGroupBox" name="IDC_NEWDOCUMENT_GR_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>611</width>
+           <height>241</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>New Document</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <widget class="QGroupBox" name="IDC_ENCODING_STATIC">
+          <property name="geometry">
+           <rect>
+            <x>220</x>
+            <y>20</y>
+            <width>381</width>
+            <height>221</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>221</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>221</height>
+           </size>
+          </property>
+          <property name="title">
+           <string>Encoding</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <widget class="QWidget" name="layoutWidget_4">
+           <property name="geometry">
+            <rect>
+             <x>9</x>
+             <y>26</y>
+             <width>371</width>
+             <height>190</height>
+            </rect>
+           </property>
+           <layout class="QGridLayout" name="gridLayout" columnstretch="1,9">
+            <item row="1" column="0" colspan="2">
+             <widget class="QRadioButton" name="IDC_RADIO_UTF8SANSBOM">
+              <property name="text">
+               <string>UTF-8</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QCheckBox" name="IDC_CHECK_OPENANSIASUTF8">
+              <property name="text">
+               <string>Apply to opened ANSI files</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0" colspan="2">
+             <widget class="QRadioButton" name="IDC_RADIO_UTF8">
+              <property name="text">
+               <string>UTF-8 with BOM</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0" colspan="2">
+             <widget class="QRadioButton" name="IDC_RADIO_UCS2BIG">
+              <property name="text">
+               <string>UCS-2 Big Endian with BOM</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="0" colspan="2">
+             <widget class="QRadioButton" name="IDC_RADIO_UCS2SMALL">
+              <property name="text">
+               <string>UCS-2 Little Endian with BOM</string>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="0" colspan="2">
+             <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="1,9">
+              <item>
+               <widget class="QRadioButton" name="IDC_RADIO_OTHERCP">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="IDC_COMBO_OTHERCP"/>
+              </item>
+             </layout>
+            </item>
+            <item row="0" column="0" colspan="2">
+             <widget class="QRadioButton" name="IDC_RADIO_ANSI">
+              <property name="text">
+               <string>ANSI</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>201</width>
+            <height>154</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="0" column="0">
+            <widget class="QGroupBox" name="IDC_FORMAT_GB_STATIC">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>101</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>101</height>
+              </size>
+             </property>
+             <property name="title">
+              <string>Format (Line ending)</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <widget class="QWidget" name="layoutWidget_3">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>24</y>
+                <width>149</width>
+                <height>73</height>
+               </rect>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_11">
+               <item>
+                <widget class="QRadioButton" name="IDC_RADIO_F_WIN">
+                 <property name="text">
+                  <string>Windows (CR LF)</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="IDC_RADIO_F_UNIX">
+                 <property name="text">
+                  <string>Unix (LF)</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="IDC_RADIO_F_MAC">
+                 <property name="text">
+                  <string>Macintosh (CR)</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="IDC_DEFAULTLANG_STATIC">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Default language :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QComboBox" name="IDC_COMBO_DEFAULTLANG">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>21</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="IDD_PREFERENCE_DEFAULTDIRECTORY_BOX">
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>10</y>
+           <width>703</width>
+           <height>177</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_13">
+          <item>
+           <widget class="QGroupBox" name="IDC_OPENSAVEDIR_GR_STATIC">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>121</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>121</height>
+             </size>
+            </property>
+            <property name="title">
+             <string>Default Directory (Open/Save)</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <widget class="QWidget" name="layoutWidget">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>30</y>
+               <width>481</width>
+               <height>82</height>
+              </rect>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_3" columnstretch="1,8,1">
+              <item row="1" column="0" colspan="3">
+               <widget class="QRadioButton" name="IDC_OPENSAVEDIR_REMEMBERLAST_RADIO">
+                <property name="text">
+                 <string>Remember last used directory</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QRadioButton" name="IDC_OPENSAVEDIR_ALWAYSON_RADIO">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="IDC_OPENSAVEDIR_ALWAYSON_EDIT"/>
+              </item>
+              <item row="2" column="2">
+               <widget class="QPushButton" name="IDD_OPENSAVEDIR_ALWAYSON_BROWSE_BUTTON">
+                <property name="text">
+                 <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="3">
+               <widget class="QRadioButton" name="IDC_OPENSAVEDIR_FOLLOWCURRENT_RADIO">
+                <property name="text">
+                 <string>Follow current document</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_12">
+            <item>
+             <widget class="QCheckBox" name="IDC_OPENSAVEDIR_CHECK_USENEWSTYLESAVEDIALOG">
+              <property name="text">
+               <string>Use new style dialog (without file extension feature &amp;&amp; Unix style path capacity)</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="IDC_OPENSAVEDIR_CHECK_DRROPFOLDEROPENFILES">
+              <property name="text">
+               <string>Open all files of folder instead of launching Folder as Workspace on folder dropping</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="IDD_PREFERENCE_RECENTFILESHISTORY_BOX">
+        <widget class="QGroupBox" name="IDC_HISTORY_GB_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>611</width>
+           <height>221</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Recent Files History</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <widget class="QGroupBox" name="IDC_DISPLAY_STATIC">
+          <property name="geometry">
+           <rect>
+            <x>100</x>
+            <y>80</y>
+            <width>381</width>
+            <height>121</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>121</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>121</height>
+           </size>
+          </property>
+          <property name="title">
+           <string>Display</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <widget class="QWidget" name="layoutWidget_2">
+           <property name="geometry">
+            <rect>
+             <x>11</x>
+             <y>21</y>
+             <width>371</width>
+             <height>101</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_14">
+            <item>
+             <widget class="QCheckBox" name="IDC_CHECK_INSUBMENU">
+              <property name="text">
+               <string>In Submenu</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="IDC_RADIO_ONLYFILENAME">
+              <property name="text">
+               <string>Only File Name</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="IDC_RADIO_FULLFILENAMEPATH">
+              <property name="text">
+               <string>Full File Name Path</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
+              <item>
+               <widget class="QRadioButton" name="IDC_RADIO_CUSTOMIZELENTH">
+                <property name="text">
+                 <string>Customize Maximum Length:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="IDC_CUSTOMIZELENGTHVAL_STATIC">
+                <property name="text">
+                 <string>0</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>237</width>
+            <height>45</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_15">
+           <item>
+            <widget class="QCheckBox" name="IDC_CHECK_DONTCHECKHISTORY">
+             <property name="text">
+              <string>Don't check at launch time</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_8">
+             <item>
+              <widget class="QLabel" name="IDC_MAXNBFILE_STATIC">
+               <property name="text">
+                <string>Max. number of entries :</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="IDC_MAXNBFILEVAL_STATIC">
+               <property name="text">
+                <string>0</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="IDD_REGEXT_BOX">
+        <widget class="QLabel" name="IDC_SUPPORTEDEXTS_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>10</y>
+           <width>171</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Supported extensions:</string>
+         </property>
+        </widget>
+        <widget class="QListView" name="IDC_REGEXT_LANG_LIST">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>40</y>
+           <width>198</width>
+           <height>331</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QListView" name="IDC_REGEXT_LANGEXT_LIST">
+         <property name="geometry">
+          <rect>
+           <x>199</x>
+           <y>40</y>
+           <width>141</width>
+           <height>331</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="IDC_CUSTOMEXT_EDIT">
+         <property name="geometry">
+          <rect>
+           <x>200</x>
+           <y>180</y>
+           <width>141</width>
+           <height>21</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="IDC_ADDFROMLANGEXT_BUTTON">
+         <property name="geometry">
+          <rect>
+           <x>350</x>
+           <y>160</y>
+           <width>51</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>-&gt;</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="IDC_REMOVEEXT_BUTTON">
+         <property name="geometry">
+          <rect>
+           <x>350</x>
+           <y>190</y>
+           <width>51</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>&lt;-</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="IDC_REGISTEREDEXTS_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>410</x>
+           <y>10</y>
+           <width>181</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Registered extensions:</string>
+         </property>
+        </widget>
+        <widget class="QListView" name="IDC_REGEXT_REGISTEREDEXTS_LIST">
+         <property name="geometry">
+          <rect>
+           <x>410</x>
+           <y>40</y>
+           <width>211</width>
+           <height>331</height>
+          </rect>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="IDD_PREFERENCE_LANG_BOX">
+        <widget class="QGroupBox" name="IDC_CHECK_LANGMENU_GR_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>20</y>
+           <width>351</width>
+           <height>401</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Language Menu</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <widget class="QCheckBox" name="IDC_CHECK_LANGMENUCOMPACT">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>251</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Make language menu compact</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="IDC_DISABLEDITEMS_STATIC">
+          <property name="geometry">
+           <rect>
+            <x>203</x>
+            <y>52</y>
+            <width>72</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Disabled items</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="IDC_BUTTON_REMOVE">
+          <property name="geometry">
+           <rect>
+            <x>150</x>
+            <y>89</y>
+            <width>41</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>-&gt;</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="IDC_ENABLEDITEMS_STATIC">
+          <property name="geometry">
+           <rect>
+            <x>15</x>
+            <y>52</y>
+            <width>72</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Available items</string>
+          </property>
+         </widget>
+         <widget class="QListView" name="IDC_LIST_DISABLEDLANG">
+          <property name="geometry">
+           <rect>
+            <x>200</x>
+            <y>70</y>
+            <width>141</width>
+            <height>331</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="IDC_BUTTON_RESTORE">
+          <property name="geometry">
+           <rect>
+            <x>150</x>
+            <y>120</y>
+            <width>41</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>&lt;-</string>
+          </property>
+         </widget>
+         <widget class="QListView" name="IDC_LIST_ENABLEDLANG">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>70</y>
+            <width>131</width>
+            <height>331</height>
+           </rect>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="IDC_TABSETTING_GB_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>352</x>
+           <y>20</y>
+           <width>271</width>
+           <height>401</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Tab Settings</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <widget class="QListView" name="IDC_LIST_TABSETTNG">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>21</y>
+            <width>256</width>
+            <height>271</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QGroupBox" name="IDC_GR_TABVALUE_STATIC">
+          <property name="geometry">
+           <rect>
+            <x>12</x>
+            <y>309</y>
+            <width>191</width>
+            <height>81</height>
+           </rect>
+          </property>
+          <property name="title">
+           <string/>
+          </property>
+          <widget class="QCheckBox" name="IDC_CHECK_REPLACEBYSPACE">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>44</y>
+             <width>155</width>
+             <height>19</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Replace by space</string>
+           </property>
+          </widget>
+          <widget class="QWidget" name="layoutWidget_5">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>20</y>
+             <width>97</width>
+             <height>17</height>
+            </rect>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <item>
+             <widget class="QLabel" name="IDC_TABSIZE_STATIC">
+              <property name="text">
+               <string>Tab size :</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="IDC_TABSIZEVAL_DISABLE_STATIC">
+              <property name="text">
+               <string>0</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+         <widget class="QCheckBox" name="IDC_CHECK_DEFAULTTABVALUE">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>298</y>
+            <width>163</width>
+            <height>19</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Use default value</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QLabel" name="IDC_TABSIZEVAL_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>330</x>
+           <y>510</y>
+           <width>18</width>
+           <height>8</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="IDD_PREFERENCE_HILITE_BOX">
+        <widget class="QGroupBox" name="IDC_SMARTHILITING_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>611</width>
+           <height>151</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Smart Highlighting</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>7</x>
+            <y>19</y>
+            <width>601</width>
+            <height>125</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_16">
+           <item>
+            <widget class="QCheckBox" name="IDC_CHECK_ENABLSMARTHILITE">
+             <property name="text">
+              <string>Enable</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="IDC_CHECK_SMARTHILITECASESENSITIVE">
+             <property name="text">
+              <string>Match case</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="IDC_CHECK_SMARTHILITEWHOLEWORDONLY">
+             <property name="text">
+              <string>Match whole word only</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="IDC_CHECK_SMARTHILITEUSEFINDSETTINGS">
+             <property name="text">
+              <string>Use Find dialog settings</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="IDC_CHECK_SMARTHILITEANOTHERRVIEW">
+             <property name="text">
+              <string>Highlight another view</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="IDC_TAGMATCHEDHILITE_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>164</y>
+           <width>611</width>
+           <height>101</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Highlight Matching Tags</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>16</y>
+            <width>611</width>
+            <height>73</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_17">
+           <item>
+            <widget class="QCheckBox" name="IDC_CHECK_ENABLTAGSMATCHHILITE">
+             <property name="text">
+              <string>Enable</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="IDC_CHECK_ENABLTAGATTRHILITE">
+             <property name="text">
+              <string>Highlight tag attributes</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="IDC_CHECK_HIGHLITENONEHTMLZONE">
+             <property name="text">
+              <string>Highlight comment/php/asp zone</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="IDD_PREFERENCE_PRINT_BOX">
+        <widget class="QGroupBox" name="IDC_COLOUROPT_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>30</y>
+           <width>241</width>
+           <height>121</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Colour Options</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>20</y>
+            <width>241</width>
+            <height>99</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_18">
+           <item>
+            <widget class="QRadioButton" name="IDC_RADIO_WYSIWYG">
+             <property name="text">
+              <string>WYSIWYG</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="IDC_RADIO_INVERT">
+             <property name="text">
+              <string>Invert</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="IDC_RADIO_BW">
+             <property name="text">
+              <string>Black on white</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="IDC_RADIO_NOBG">
+             <property name="text">
+              <string>No background colour</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QCheckBox" name="IDC_CHECK_PRINTLINENUM">
+         <property name="geometry">
+          <rect>
+           <x>6</x>
+           <y>6</y>
+           <width>231</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Print line number</string>
+         </property>
+        </widget>
+        <widget class="QGroupBox" name="IDC_MARGESETTINGS_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>150</y>
+           <width>241</width>
+           <height>141</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Margin Setting (Unit:mm)</string>
+         </property>
+         <widget class="QLineEdit" name="IDC_EDIT_MB">
+          <property name="geometry">
+           <rect>
+            <x>108</x>
+            <y>90</y>
+            <width>17</width>
+            <height>14</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="IDC_MB_STATIC">
+          <property name="geometry">
+           <rect>
+            <x>94</x>
+            <y>110</y>
+            <width>54</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Bottom</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="IDC_EDIT_MT">
+          <property name="geometry">
+           <rect>
+            <x>108</x>
+            <y>50</y>
+            <width>17</width>
+            <height>14</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="IDC_MT_STATIC">
+          <property name="geometry">
+           <rect>
+            <x>103</x>
+            <y>30</y>
+            <width>31</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Top</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="IDC_ML_STATIC">
+          <property name="geometry">
+           <rect>
+            <x>40</x>
+            <y>65</y>
+            <width>41</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Left</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="IDC_EDIT_ML">
+          <property name="geometry">
+           <rect>
+            <x>90</x>
+            <y>69</y>
+            <width>17</width>
+            <height>14</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="IDC_EDIT_MR">
+          <property name="geometry">
+           <rect>
+            <x>126</x>
+            <y>69</y>
+            <width>17</width>
+            <height>14</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="IDC_MR_STATIC">
+          <property name="geometry">
+           <rect>
+            <x>160</x>
+            <y>65</y>
+            <width>51</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Right</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="IDC_HEADERFPPTER_GR_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>250</x>
+           <y>30</y>
+           <width>371</width>
+           <height>331</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Header and Footer</string>
+         </property>
+         <widget class="QGroupBox" name="IDC_HGB_STATIC">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>70</y>
+            <width>351</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="title">
+           <string>Header</string>
+          </property>
+          <widget class="QLabel" name="IDC_HM_STATIC">
+           <property name="geometry">
+            <rect>
+             <x>90</x>
+             <y>21</y>
+             <width>91</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Middle part</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="IDC_EDIT_HRIGHT">
+           <property name="geometry">
+            <rect>
+             <x>191</x>
+             <y>40</y>
+             <width>83</width>
+             <height>21</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QCheckBox" name="IDC_CHECK_HBOLD">
+           <property name="geometry">
+            <rect>
+             <x>170</x>
+             <y>70</y>
+             <width>71</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Bold</string>
+           </property>
+          </widget>
+          <widget class="QComboBox" name="IDC_COMBO_HFONTSIZE">
+           <property name="geometry">
+            <rect>
+             <x>86</x>
+             <y>70</y>
+             <width>71</width>
+             <height>21</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QComboBox" name="IDC_COMBO_HFONTNAME">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>70</y>
+             <width>83</width>
+             <height>21</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="IDC_EDIT_HMIDDLE">
+           <property name="geometry">
+            <rect>
+             <x>86</x>
+             <y>40</y>
+             <width>101</width>
+             <height>21</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QCheckBox" name="IDC_CHECK_HITALIC">
+           <property name="geometry">
+            <rect>
+             <x>250</x>
+             <y>72</y>
+             <width>81</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Italic</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="IDC_HL_STATIC">
+           <property name="geometry">
+            <rect>
+             <x>2</x>
+             <y>21</y>
+             <width>79</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Left part</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="IDC_HR_STATIC">
+           <property name="geometry">
+            <rect>
+             <x>191</x>
+             <y>20</y>
+             <width>101</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Right part</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="IDC_EDIT_HLEFT">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>40</y>
+             <width>83</width>
+             <height>21</height>
+            </rect>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QGroupBox" name="IDC_FGB_STATIC">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>180</y>
+            <width>351</width>
+            <height>111</height>
+           </rect>
+          </property>
+          <property name="title">
+           <string>Footer</string>
+          </property>
+          <widget class="QLabel" name="IDC_FR_STATIC">
+           <property name="geometry">
+            <rect>
+             <x>210</x>
+             <y>30</y>
+             <width>79</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Right part</string>
+           </property>
+          </widget>
+          <widget class="QComboBox" name="IDC_COMBO_FFONTNAME">
+           <property name="geometry">
+            <rect>
+             <x>9</x>
+             <y>78</y>
+             <width>84</width>
+             <height>21</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QComboBox" name="IDC_COMBO_FFONTSIZE">
+           <property name="geometry">
+            <rect>
+             <x>101</x>
+             <y>78</y>
+             <width>61</width>
+             <height>21</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QCheckBox" name="IDC_CHECK_FBOLD">
+           <property name="geometry">
+            <rect>
+             <x>180</x>
+             <y>80</y>
+             <width>71</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Bold</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="IDC_EDIT_FLEFT">
+           <property name="geometry">
+            <rect>
+             <x>9</x>
+             <y>53</y>
+             <width>83</width>
+             <height>20</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="IDC_EDIT_FRIGHT">
+           <property name="geometry">
+            <rect>
+             <x>189</x>
+             <y>53</y>
+             <width>83</width>
+             <height>20</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QCheckBox" name="IDC_CHECK_FITALIC">
+           <property name="geometry">
+            <rect>
+             <x>260</x>
+             <y>80</y>
+             <width>81</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Italic</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="IDC_EDIT_FMIDDLE">
+           <property name="geometry">
+            <rect>
+             <x>100</x>
+             <y>53</y>
+             <width>83</width>
+             <height>20</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QLabel" name="IDC_FL_STATIC">
+           <property name="geometry">
+            <rect>
+             <x>11</x>
+             <y>30</y>
+             <width>78</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Left part</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="IDC_FM_STATIC">
+           <property name="geometry">
+            <rect>
+             <x>100</x>
+             <y>30</y>
+             <width>82</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Middle part</string>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QLabel" name="IDC_WHICHPART_STATIC">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>300</y>
+            <width>291</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Here display your variable settings</string>
+          </property>
+         </widget>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>11</x>
+            <y>30</y>
+            <width>351</width>
+            <height>30</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_10">
+           <item>
+            <widget class="QLabel" name="IDC_VAR_STATIC">
+             <property name="text">
+              <string>Variable :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="IDC_COMBO_VARLIST"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="IDC_BUTTON_ADDVAR">
+             <property name="text">
+              <string>Add</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QLabel" name="IDC_VIEWPANEL_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>370</x>
+           <y>430</y>
+           <width>180</width>
+           <height>8</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="IDD_PREFERENCE_BACKUP_BOX">
+        <widget class="QGroupBox" name="IDC_BACKUPDIR_RESTORESESSION_GRP_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>8</y>
+           <width>621</width>
+           <height>121</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Session snapshot and periodic backup</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>5</x>
+            <y>18</y>
+            <width>611</width>
+            <height>94</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_4">
+           <item row="0" column="0" colspan="4">
+            <widget class="QCheckBox" name="IDC_CHECK_REMEMBERSESSION">
+             <property name="text">
+              <string>Remember current session for next launch</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="4">
+            <widget class="QCheckBox" name="IDC_BACKUPDIR_RESTORESESSION_CHECK">
+             <property name="text">
+              <string>Enable session snapshot and periodic backup</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="2">
+            <widget class="QLabel" name="IDD_BACKUPDIR_RESTORESESSION_STATIC1">
+             <property name="text">
+              <string>Backup in every</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QLineEdit" name="IDC_BACKUPDIR_RESTORESESSION_EDIT"/>
+           </item>
+           <item row="2" column="3">
+            <widget class="QLabel" name="IDD_BACKUPDIR_RESTORESESSION_STATIC2">
+             <property name="text">
+              <string>seconds</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="IDD_BACKUPDIR_RESTORESESSION_PATHLABEL_STATIC">
+             <property name="text">
+              <string>Backup path:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1" colspan="3">
+            <widget class="QLineEdit" name="IDD_BACKUPDIR_RESTORESESSION_PATH_EDIT"/>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="IDC_BACKUPDIR_GRP_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>130</y>
+           <width>621</width>
+           <height>151</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Backup on save</string>
+         </property>
+         <widget class="QGroupBox" name="IDC_BACKUPDIR_USERCUSTOMDIR_GRPSTATIC">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>92</y>
+            <width>601</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="title">
+           <string>Custom Backup Directory</string>
+          </property>
+          <widget class="QLabel" name="IDD_BACKUPDIR_STATIC">
+           <property name="geometry">
+            <rect>
+             <x>8</x>
+             <y>24</y>
+             <width>51</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Directory :</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="IDC_BACKUPDIR_EDIT">
+           <property name="geometry">
+            <rect>
+             <x>65</x>
+             <y>22</y>
+             <width>500</width>
+             <height>20</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="IDD_BACKUPDIR_BROWSE_BUTTON">
+           <property name="geometry">
+            <rect>
+             <x>565</x>
+             <y>20</y>
+             <width>31</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QCheckBox" name="IDC_BACKUPDIR_CHECK">
+          <property name="geometry">
+           <rect>
+            <x>3</x>
+            <y>91</y>
+            <width>16</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>8</x>
+            <y>20</y>
+            <width>601</width>
+            <height>65</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_19">
+           <item>
+            <widget class="QRadioButton" name="IDC_RADIO_BKNONE">
+             <property name="text">
+              <string>None</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="IDC_RADIO_BKSIMPLE">
+             <property name="text">
+              <string>Simple backup</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="IDC_RADIO_BKVERBOSE">
+             <property name="text">
+              <string>Verbose backup</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="IDD_PREFERENCE_AUTOCOMPLETION_BOX">
+        <widget class="QGroupBox" name="IDD_AUTOC_GRPSTATIC">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>20</y>
+           <width>601</width>
+           <height>141</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Auto-Completion</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>4</x>
+            <y>21</y>
+            <width>591</width>
+            <height>113</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_6" columnstretch="7,3">
+           <item row="0" column="0">
+            <widget class="QCheckBox" name="IDD_AUTOC_ENABLECHECK">
+             <property name="text">
+              <string>Enable auto-completion on each input</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <layout class="QHBoxLayout" name="horizontalLayout_11">
+             <item>
+              <widget class="QLabel" name="IDD_AUTOC_STATIC_FROM">
+               <property name="text">
+                <string>From</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="IDD_AUTOC_STATIC_N">
+               <property name="text">
+                <string>1</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="IDD_AUTOC_STATIC_CHAR">
+               <property name="text">
+                <string>th character</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0" colspan="2">
+            <layout class="QGridLayout" name="gridLayout_5" columnstretch="7,3">
+             <property name="leftMargin">
+              <number>30</number>
+             </property>
+             <property name="rightMargin">
+              <number>13</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QRadioButton" name="IDD_AUTOC_FUNCRADIO">
+               <property name="text">
+                <string>Function completion</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLabel" name="IDD_AUTOC_STATIC_NOTE">
+               <property name="text">
+                <string>Valid value : 1 - 9</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QRadioButton" name="IDD_AUTOC_BOTHRADIO">
+               <property name="text">
+                <string>Function and word completion</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QCheckBox" name="IDD_AUTOC_IGNORENUMBERS">
+               <property name="text">
+                <string>Ignore numbers</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0" colspan="2">
+              <widget class="QRadioButton" name="IDD_AUTOC_WORDRADIO">
+               <property name="text">
+                <string>Word completion</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="2" column="0" colspan="2">
+            <widget class="QCheckBox" name="IDD_FUNC_CHECK">
+             <property name="text">
+              <string>Function parameters hint on input</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="IDD_AUTOCINSERT_GRPSTATIC">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>160</y>
+           <width>601</width>
+           <height>131</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Auto-Insert</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget_6">
+          <property name="geometry">
+           <rect>
+            <x>2</x>
+            <y>18</y>
+            <width>591</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_7" columnstretch="3,3,2,1,1">
+           <item row="4" column="2">
+            <widget class="QLabel" name="IDC_MACHEDPAIR_STATIC3">
+             <property name="text">
+              <string>Matched pair 3:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QCheckBox" name="IDD_AUTOC_DOUBLEQUOTESCHECK">
+             <property name="text">
+              <string>&quot;&quot;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QLabel" name="IDC_MACHEDPAIR_STATIC2">
+             <property name="text">
+              <string>Matched pair 2:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QCheckBox" name="IDD_AUTOCCURLYBRACKET_CHECK">
+             <property name="text">
+              <string>{</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QCheckBox" name="IDD_AUTOCPARENTHESES_CHECK">
+             <property name="text">
+              <string>(</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="3">
+            <widget class="QLineEdit" name="IDC_MACHEDPAIROPEN_EDIT2"/>
+           </item>
+           <item row="4" column="3">
+            <widget class="QLineEdit" name="IDC_MACHEDPAIROPEN_EDIT3"/>
+           </item>
+           <item row="2" column="4">
+            <widget class="QLineEdit" name="IDC_MACHEDPAIRCLOSE_EDIT1"/>
+           </item>
+           <item row="4" column="1">
+            <widget class="QCheckBox" name="IDD_AUTOCTAG_CHECK">
+             <property name="text">
+              <string>html/xml close tag</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QLabel" name="IDC_MACHEDPAIR_STATIC1">
+             <property name="text">
+              <string>Matched pair 1:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QCheckBox" name="IDD_AUTOCBRACKET_CHECK">
+             <property name="text">
+              <string>[</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="4">
+            <widget class="QLineEdit" name="IDC_MACHEDPAIRCLOSE_EDIT2"/>
+           </item>
+           <item row="4" column="4">
+            <widget class="QLineEdit" name="IDC_MACHEDPAIRCLOSE_EDIT3"/>
+           </item>
+           <item row="2" column="3">
+            <widget class="QLineEdit" name="IDC_MACHEDPAIROPEN_EDIT1"/>
+           </item>
+           <item row="3" column="1">
+            <widget class="QCheckBox" name="IDD_AUTOC_QUOTESCHECK">
+             <property name="text">
+              <string>'</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="3" alignment="Qt::AlignBottom">
+            <widget class="QLabel" name="IDC_MACHEDPAIROPEN_STATIC">
+             <property name="text">
+              <string>Open</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="4" alignment="Qt::AlignBottom">
+            <widget class="QLabel" name="IDC_MACHEDPAIRCLOSE_STATIC">
+             <property name="text">
+              <string>Close</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="IDD_PREFERENCE_MULTIINSTANCE_BOX">
+        <widget class="QGroupBox" name="IDC_MULTIINST_GB_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>10</y>
+           <width>541</width>
+           <height>111</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Multi-instance settings</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>3</x>
+            <y>19</y>
+            <width>531</width>
+            <height>84</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_20">
+           <item>
+            <widget class="QRadioButton" name="IDC_SESSIONININST_RADIO">
+             <property name="text">
+              <string>Open session in a new instance of Notepad++</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="IDC_MULTIINST_RADIO">
+             <property name="text">
+              <string>Always in multi-instance mode</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="IDC_MONOINST_RADIO">
+             <property name="text">
+              <string>Default (mono-instance)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="IDD_STATIC_RESTARTNOTE">
+             <property name="text">
+              <string>* The modification of this setting needs to restart Notepad++</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="IDD_PREFERENCE_DELIMITERSETTINGS_BOX">
+        <widget class="QGroupBox" name="IDC_WORDCHARLIST_GB_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>10</y>
+           <width>471</width>
+           <height>93</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Word character list</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>452</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_8">
+           <item row="0" column="0" colspan="2">
+            <widget class="QRadioButton" name="IDC_RADIO_WORDCHAR_DEFAULT">
+             <property name="text">
+              <string>Use default Word character list as it is</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="2">
+            <widget class="QRadioButton" name="IDC_RADIO_WORDCHAR_CUSTOM">
+             <property name="text">
+              <string>Add your character as part of word\r(don't choose it unless you know what you're doing)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLineEdit" name="IDC_WORDCHAR_CUSTOM_EDIT"/>
+           </item>
+           <item row="2" column="1">
+            <widget class="QPushButton" name="IDD_WORDCHAR_QUESTION_BUTTON">
+             <property name="text">
+              <string>?</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QLabel" name="IDD_STATIC_WORDCHAR_WARNING">
+         <property name="geometry">
+          <rect>
+           <x>111</x>
+           <y>70</y>
+           <width>210</width>
+           <height>8</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QGroupBox" name="IDC_DELIMITERSETTINGS_GB_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>110</y>
+           <width>471</width>
+           <height>91</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Delimiter selection settings (Ctrl + Mouse double click)</string>
+         </property>
+         <widget class="QCheckBox" name="IDD_SEVERALLINEMODEON_CHECK">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>70</y>
+            <width>401</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Allow on several lines</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="IDD_STATIC_BLABLA2NDLINE">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>50</y>
+            <width>126</width>
+            <height>8</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>bla bla bla bla bla bla bla bla bla bla bla bla</string>
+          </property>
+         </widget>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>8</x>
+            <y>20</y>
+            <width>321</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_9">
+           <item row="0" column="0">
+            <widget class="QLabel" name="IDD_STATIC_OPENDELIMITER">
+             <property name="text">
+              <string>Open</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="IDC_EDIT_OPENDELIMITER"/>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLabel" name="IDD_STATIC_BLABLA">
+             <property name="text">
+              <string>bla bla bla bla bla bla</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3">
+            <widget class="QLineEdit" name="IDC_EDIT_CLOSEDELIMITER"/>
+           </item>
+           <item row="0" column="4">
+            <widget class="QLabel" name="IDD_STATIC_CLOSEDELIMITER">
+             <property name="text">
+              <string>Close</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="IDD_PREFERENCE_SETTINGSONCLOUD_BOX">
+        <widget class="QGroupBox" name="IDC_SETTINGSONCLOUD_GB_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>110</x>
+           <y>30</y>
+           <width>431</width>
+           <height>102</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Settings on cloud</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>1</x>
+            <y>19</y>
+            <width>421</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_10">
+           <item row="0" column="0">
+            <widget class="QRadioButton" name="IDC_NOCLOUD_RADIO">
+             <property name="text">
+              <string>No Cloud</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QRadioButton" name="IDC_WITHCLOUD_RADIO">
+             <property name="text">
+              <string>Set your cloud location path here:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLineEdit" name="IDC_CLOUDPATH_EDIT"/>
+           </item>
+           <item row="2" column="1">
+            <widget class="QPushButton" name="IDD_CLOUDPATH_BROWSE_BUTTON">
+             <property name="text">
+              <string>...</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QLabel" name="IDC_SETTINGSONCLOUD_WARNING_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>131</x>
+           <y>117</y>
+           <width>220</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="IDD_PREFERENCE_SEARCHENGINE_BOX">
+        <widget class="QGroupBox" name="IDC_SEARCHENGINES_GB_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>20</y>
+           <width>621</width>
+           <height>201</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Search Engine (for command &quot;Search on Internet&quot;)</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>11</x>
+            <y>14</y>
+            <width>601</width>
+            <height>179</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_21">
+           <item>
+            <widget class="QRadioButton" name="IDC_SEARCHENGINE_DUCKDUCKGO_RADIO">
+             <property name="text">
+              <string>DuckDuckGo</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="IDC_SEARCHENGINE_GOOGLE_RADIO">
+             <property name="text">
+              <string>Google</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="IDC_SEARCHENGINE_BING_RADIO">
+             <property name="text">
+              <string>Bing</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="IDC_SEARCHENGINE_YAHOO_RADIO">
+             <property name="text">
+              <string>Yahoo!</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="IDC_SEARCHENGINE_STACKOVERFLOW_RADIO">
+             <property name="text">
+              <string>Stack Overflow</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="IDC_SEARCHENGINE_CUSTOM_RADIO">
+             <property name="text">
+              <string>Set your search engine here:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="IDC_SEARCHENGINE_EDIT"/>
+           </item>
+           <item>
+            <widget class="QLabel" name="IDD_SEARCHENGINE_NOTE_STATIC">
+             <property name="text">
+              <string>Example: https://www.google.com/search?q=$(CURRENT_WORD)</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="IDD_PREFERENCE_SETTING_BOX">
+        <widget class="QGroupBox" name="IDC_DOCUMENTSWITCHER_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>20</y>
+           <width>251</width>
+           <height>61</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Document Switcher (Ctrl+TAB)</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>17</y>
+            <width>251</width>
+            <height>42</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_22">
+           <item>
+            <widget class="QCheckBox" name="IDC_CHECK_ENABLEDOCSWITCHER">
+             <property name="text">
+              <string>Enable</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="IDC_CHECK_STYLEMRU">
+             <property name="text">
+              <string>Enable MRU behaviour</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="IDC_CLICKABLELINK_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>260</x>
+           <y>20</y>
+           <width>211</width>
+           <height>61</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Clickable Link Settings</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>17</y>
+            <width>211</width>
+            <height>42</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_24">
+           <item>
+            <widget class="QCheckBox" name="IDC_CHECK_CLICKABLELINK_NOUNDERLINE">
+             <property name="text">
+              <string>No underline</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="IDC_CHECK_CLICKABLELINK_ENABLE">
+             <property name="text">
+              <string>Enable</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="IDC_DOCUMENTPEEK_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>80</y>
+           <width>251</width>
+           <height>61</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Document Peeker</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>17</y>
+            <width>251</width>
+            <height>42</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_23">
+           <item>
+            <widget class="QCheckBox" name="IDC_CHECK_ENABLEDOCPEEKER">
+             <property name="text">
+              <string>Peek on tab</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="IDC_CHECK_ENABLEDOCPEEKONMAP">
+             <property name="text">
+              <string>Peek on document map</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="IDC_FILEAUTODETECTION_STATIC">
+         <property name="geometry">
+          <rect>
+           <x>260</x>
+           <y>90</y>
+           <width>211</width>
+           <height>91</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>File Status Auto-Detection</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>14</y>
+            <width>211</width>
+            <height>68</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_25">
+           <item>
+            <widget class="QComboBox" name="IDC_COMBO_FILEUPDATECHOICE"/>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="IDC_CHECK_UPDATESILENTLY">
+             <property name="text">
+              <string>Update silently</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="IDC_CHECK_UPDATEGOTOEOF">
+             <property name="text">
+              <string>Scroll to the last line after update</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>260</x>
+           <y>190</y>
+           <width>161</width>
+           <height>48</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_11" columnstretch="8,2">
+          <item row="0" column="0">
+           <widget class="QLabel" name="IDC_SESSIONFILEEXT_STATIC">
+            <property name="text">
+             <string>Session file ext.:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="IDC_EDIT_SESSIONFILEEXT"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="IDC_WORKSPACEFILEEXT_STATIC">
+            <property name="text">
+             <string>Workspace file ext.:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="IDC_EDIT_WORKSPACEFILEEXT"/>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>150</y>
+           <width>251</width>
+           <height>134</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_26">
+          <item>
+           <widget class="QCheckBox" name="IDC_CHECK_DETECTENCODING">
+            <property name="text">
+             <string>Autodetect character encoding</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="IDC_CHECK_MAINTAININDENT">
+            <property name="text">
+             <string>Auto-indent</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="IDC_CHECK_MIN2SYSTRAY">
+            <property name="text">
+             <string>Minimize to system tray</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="IDC_CHECK_SHORTTITLE">
+            <property name="text">
+             <string>Show only filename in title bar</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="IDC_CHECK_BACKSLASHISESCAPECHARACTERFORSQL">
+            <property name="text">
+             <string>Treat backslash as escape character for SQL</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="IDC_CHECK_AUTOUPDATE">
+            <property name="text">
+             <string>Enable Notepad++ auto-updater</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="frame">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>45</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>45</height>
+        </size>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QPushButton" name="IDC_BUTTON_CLOSE">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Close</string>
+        </property>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
